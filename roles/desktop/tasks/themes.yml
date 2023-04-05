@@ -20,15 +20,18 @@
     mode: push
     src: "{{ temp_theme.path }}/Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-BL-LB"
     dest: "/usr/share/themes/"
+  become_user: root
 
 - name: Install icons theme
   ansible.posix.synchronize:
     mode: push
     src: "{{ temp_theme.path }}/Tokyo-Night-GTK-Theme/icons/Tokyonight-Moon"
     dest: "/usr/share/icons/"
+  become_user: root
 
 - name: Install cursors theme
   ansible.posix.synchronize:
     mode: push
     src: "{{ temp_theme.path }}/Sweet/kde/cursors/Sweet-cursors"
     dest: "/usr/share/icons/"
+  become_user: root

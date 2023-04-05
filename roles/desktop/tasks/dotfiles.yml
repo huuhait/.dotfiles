@@ -4,6 +4,7 @@
     dest: "/home/{{ owner }}"
     owner: "{{ owner }}"
     group: "{{ group }}"
+    mode: 0775
   with_items:
     - .config
     - .icons

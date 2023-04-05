@@ -1,11 +1,28 @@
 - name: Upgrade packages
   command:
-    cmd: "sudo pacman -Syu"
+    cmd: "sudo pacman -Sy"
 
-# - name: Install packages
-#   command:
-#     cmd: "paru -S --noconfirm --nocheck --skipreview {{ item }}"
-#   with_items: "{{ dependencies }}"
+- name: Clear paru cache
+  shell: "sudo rm -rf /home/{{ owner }}/.cache/paru/clone"
+
+- name: Install packages
+  shell: "paru -S --noconfirm --nocheck --skipreview {{ item }}"
+  with_items: "{{ dependencies }}"
+
+- name: Remove unused xdg-desktop-portal
+  shell: "paru -R --noconfirm xdg-desktop-portal-gnome || echo 1"
+  ignore_errors: true
+
+- name: Fetch zap-zsh
+  ansible.builtin.uri:
+    url: https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh
+    return_content: true
+  register: zap_installer
+
+- name: Run zap-zsh installer
+  ansible.builtin.shell:
+    cmd: zsh -s
+    stdin: "{{ zap_installer.content }}"
 
 - name: Install themes
   include_tasks: themes.yml
