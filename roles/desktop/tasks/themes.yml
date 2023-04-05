@@ -1,0 +1,34 @@
+- name: Create temporary theme directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: theme
+  register: temp_theme
+
+- name: Clone Tokyo-Night-GTK-Theme theme
+  git:
+    repo: "https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme.git"
+    dest: "{{ temp_theme.path }}/Tokyo-Night-GTK-Theme"
+
+- name: Clone Sweet theme
+  git:
+    repo: "https://github.com/EliverLara/Sweet.git"
+    version: "nova"
+    dest: "{{ temp_theme.path }}/Sweet"
+
+- name: Install gtk theme
+  ansible.posix.synchronize:
+    mode: push
+    src: "{{ temp_theme.path }}/Tokyo-Night-GTK-Theme/themes/Tokyonight-Dark-BL-LB"
+    dest: "/usr/share/themes/"
+
+- name: Install icons theme
+  ansible.posix.synchronize:
+    mode: push
+    src: "{{ temp_theme.path }}/Tokyo-Night-GTK-Theme/icons/Tokyonight-Moon"
+    dest: "/usr/share/icons/"
+
+- name: Install cursors theme
+  ansible.posix.synchronize:
+    mode: push
+    src: "{{ temp_theme.path }}/Sweet/kde/cursors/Sweet-cursors"
+    dest: "/usr/share/icons/"

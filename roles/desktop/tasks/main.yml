@@ -1,0 +1,14 @@
+- name: Upgrade packages
+  command:
+    cmd: "sudo pacman -Syu"
+
+# - name: Install packages
+#   command:
+#     cmd: "paru -S --noconfirm --nocheck --skipreview {{ item }}"
+#   with_items: "{{ dependencies }}"
+
+- name: Install themes
+  include_tasks: themes.yml
+
+- name: Install dotfiles
+  include_tasks: dotfiles.yml

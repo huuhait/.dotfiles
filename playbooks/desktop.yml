@@ -1,0 +1,6 @@
+- name: Install desktop enviroment
+  hosts: localhost
+  connection: local
+  become: true
+  roles:
+    - role: desktop
