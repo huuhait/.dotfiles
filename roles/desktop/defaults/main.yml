@@ -52,4 +52,6 @@ dependencies:
   - rlr-git
   - uget
   - libreoffice-fresh
-  - nemo bulky
+  - nemo
+  - bulky
+  - brave
