@@ -6,11 +6,11 @@
 @define-color cc-bg alpha(@noti-bg, 0.9);
 
 @define-color noti-border-color @noti-bg;
-@define-color noti-bg-hover rgb(39,44,66);
+@define-color noti-bg-hover rgb(39, 44, 66);
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
 @define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
 
-@define-color bg-selected rgb(137,180,250);
+@define-color bg-selected rgb(137, 180, 250);
 
 
 /* Window behind control center and on all other monitors */
@@ -64,7 +64,7 @@
 .notification-content {
   outline: none;
   margin: 10px;
-  padding:8px;
+  padding: 8px;
   border-radius: 16px;
   border: 2px solid #cba6f7;
   background: @cc-bg;
@@ -165,6 +165,7 @@
   margin: 8px;
   font-size: 1.5rem;
 }
+
 .widget-title > button {
   font-size: initial;
   color: white;
@@ -174,6 +175,7 @@
   box-shadow: none;
   border-radius: 12px;
 }
+
 .widget-title > button:hover {
   background: @noti-bg-hover;
 }
@@ -183,6 +185,7 @@
   margin: 8px;
   font-size: 1rem;
 }
+
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 12px;
@@ -190,9 +193,11 @@
   border: 1px solid @noti-border-color;
   box-shadow: none;
 }
+
 .widget-dnd > switch:checked {
   background: @bg-selected;
 }
+
 .widget-dnd > switch slider {
   background: @noti-bg-hover;
   border-radius: 12px;
@@ -202,6 +207,7 @@
 .widget-label {
   margin: 8px;
 }
+
 .widget-label > label {
   font-size: 1.1rem;
 }
@@ -210,14 +216,17 @@
 .widget-mpris {
   /* The parent to all players */
 }
+
 .widget-mpris-player {
   padding: 8px;
   margin: 8px;
 }
+
 .widget-mpris-title {
   font-weight: bold;
   font-size: 1rem;
 }
+
 .widget-mpris-subtitle {
- font-size: 0.85rem;
+  font-size: 0.85rem;
 }

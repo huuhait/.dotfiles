@@ -17,8 +17,9 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 scripts=~/.scripts
 
 # gsettings
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme 'Tokyonight-Dark-BL-LB'
-gsettings set org.gnome.desktop.interface font-name 'CaskaydiaCove Nerd Font 9'
+gsettings set org.gnome.desktop.interface font-name 'FiraCode Nerd Font 9'
 gsettings set org.gnome.desktop.interface icon-theme 'Tokyonight-Moon'
 gsettings set org.gnome.desktop.interface cursor-theme 'Sweet-cursors'
 
@@ -31,6 +32,8 @@ swaync &
 # waybar
 $scripts/launch_waybar &
 # $scripts/dynamic &
+
+$scripts/idle &
 
 # wallpaper
 $scripts/wall ~/.config/hypr/wallpapers/1.jpg &
@@ -46,9 +49,15 @@ nm-applet --indicator &
 mpd &
 
 # other
-hyprctl setcursor Sweet-cursors 24
+hyprctl setcursor Sweet-cursors 28
 wl-paste --watch cliphist store &
 notify-send -a aurora "hello $(whoami)" &
 
+$scripts/lock &
+
 sleep 2
 mpd-mpris &
+
+swayosd &
+
+scream -i virbr0 &

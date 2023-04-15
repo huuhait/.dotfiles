@@ -6,7 +6,7 @@ dependencies:
   - linux-headers
   - pokemon-colorscripts-git
   - xdg-desktop-portal-hyprland-git
-  - hyprland-git
+  - hyprland-nvidia
   - hyprpicker-git
   - waybar-hyprland
   - cava
@@ -29,7 +29,8 @@ dependencies:
   - qt5-wayland
   - qt6-base
   - qt6-wayland
-  - lsd geany
+  - lsd
+  - geany
   - bat
   - cliphist-bin
   - gamemode
@@ -37,6 +38,7 @@ dependencies:
   - g4music
   - wlogout
   - visual-studio-code-bin
+  - sddm-git
   - boo-grub-git
   - boo-sddm-git
   - proxzima-plymouth-git
@@ -57,6 +59,15 @@ dependencies:
   - libreoffice-fresh
   - nemo
   - bulky
-  - brave
   - gnome-keyring
   - libsecret
+  - grim
+  - slurp
+  - swayidle
+  - sway-audio-idle-inhibit-git
+  - transmission-gtk
+
+remove_dependencies:
+  - dunst
+  - thunar
+  - xdg-desktop-portal-gnome

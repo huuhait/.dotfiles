@@ -2,6 +2,6 @@
   hosts: localhost
   connection: local
   become: true
-  become_user: "{{ user }}"
+  become_user: "huuhait"
   roles:
     - role: desktop

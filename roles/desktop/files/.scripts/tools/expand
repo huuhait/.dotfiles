@@ -5,8 +5,6 @@ files=(~/.config/hypr/wallpapers/*)
 
 scripts=~/.scripts
 
-cooldown=1
-
 change () {
     index=$(cat $TEMP)
     index=$((index+$1))
@@ -41,13 +39,6 @@ do
                 echo ""
             fi
             ;;
-        "weather")
-            if $scripts/tools/toolbar_state; then
-                ~/.scripts/wttr
-            else
-                echo ""
-            fi
-            ;;
         "wall")
             if $scripts/tools/toolbar_state; then
                 echo '{"text":" ","tooltip":"Wallpaper Next | Prev"}'
@@ -70,5 +61,5 @@ do
             fi
             ;;
     esac
-    sleep $cooldown
+    sleep 0.1
 done

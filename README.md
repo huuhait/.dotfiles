@@ -2,7 +2,10 @@
 
 An ansible dotfiles for archcraft
 
-Note:
+## Steps:
+- Uncomment `multilib` in `/etc/pacman.conf`
+
+## Note:
 
 - This dotfiles is a copy version from [PROxZIMA](https://github.com/PROxZIMA/.dotfiles) and rewrite in ansible and fix things it's not include firefox, vscode, vim config if you want to use a full version please switch to [PROxZIMA](https://github.com/PROxZIMA/.dotfiles) version
 
