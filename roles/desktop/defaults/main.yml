@@ -42,7 +42,7 @@ dependencies:
   - boo-grub-git
   - boo-sddm-git
   - proxzima-plymouth-git
-  - discord
+  - webcord
   - telegram-desktop
   - system76-power
   - obs-studio

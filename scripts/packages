@@ -9,8 +9,9 @@ sudo pacman -Syu
 yay -S rustup
 rustup default stable
 
+yay -S paru ansible
+
 sudo rm -rf $HOME/.cache/paru/clone
 
-yay -S paru ansible
 paru -S $dependencies
 paru -R $remove_dependencies > /dev/null

@@ -2,7 +2,7 @@
     "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     //"gtk-layer-shell": "false",
-    "height": 45, // Waybar height (to be removed for auto height)
+    "height": 35, // Waybar height (to be removed for auto height)
     // "width": 2560, // Waybar width
     "spacing": 0, // Gaps between modules (0px) Adjusted in the css
     "margin-top": 0,
@@ -250,8 +250,9 @@
     },
     "custom/weather": {
         "tooltip": true,
+        "interval": 60,
         "format": "{}",
-        "exec": "~/.scripts/tools/expand weather",
+        "exec": "~/.scripts/wttr",
         "return-type": "json"
     },
     "custom/ss": {
@@ -264,7 +265,6 @@
         "format": "{}",
         "exec": "~/.scripts/tools/expand wall",
         "return-type": "json",
-        // "interval": 1,
         "on-click": "~/.scripts/tools/expand cycle",
         "on-click-right": "~/.scripts/tools/expand cycler"
     },

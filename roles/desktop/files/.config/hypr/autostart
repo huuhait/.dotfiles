@@ -29,6 +29,10 @@ gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 # notification daemon
 swaync &
 
+telegram-desktop &
+
+webcord &
+
 # waybar
 $scripts/launch_waybar &
 # $scripts/dynamic &
@@ -36,7 +40,7 @@ $scripts/launch_waybar &
 $scripts/idle &
 
 # wallpaper
-$scripts/wall ~/.config/hypr/wallpapers/1.jpg &
+$scripts/wall ~/.config/hypr/wallpapers/3.jpg &
 
 # effects
 # $scripts/tools/rgb &
