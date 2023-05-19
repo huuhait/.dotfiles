@@ -7,8 +7,8 @@
     "spacing": 0, // Gaps between modules (0px) Adjusted in the css
     "margin-top": 0,
     //"margin-bottom":-10,
-    "margin-left": 10,
-    "margin-right": 10,
+    // "margin-left": 10,
+    // "margin-right": 10,
     // Choose the order of the modules
     "modules-left": [
         "custom/launcher",
@@ -28,6 +28,7 @@
         "backlight",
         "battery",
         "custom/notifications",
+        "custom/ibus",
         "tray",
         "clock",
         "custom/weather",
@@ -39,7 +40,7 @@
     "custom/launcher": {
         "format": "{}",
         "tooltip": true,
-        "exec": "echo '{\"text\":\"\",\"tooltip\":\"Drun | Run\"}'",
+        "exec": "echo '{\"text\":\" \",\"tooltip\":\"Drun | Run\"}'",
         "return-type": "json",
         "on-click": "pkill wofi || gamemoderun wofi --show drun -n",
         "on-click-right": "pkill wofi || gamemoderun wofi --show run -n",
@@ -223,6 +224,11 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/ibus": {
+        "tooltip": false,
+        "exec": "~/.scripts/ibus_exec",
+        "on-click": "~/.scripts/ibus",
     },
     "tray": {
         "icon-size": 15,

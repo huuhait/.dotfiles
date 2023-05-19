@@ -1,5 +1,6 @@
 base-devel
-linux-headers
+linux-zen
+linux-zen-headers
 pokemon-colorscripts-git
 xdg-desktop-portal-hyprland-git
 hyprland-nvidia
@@ -62,3 +63,14 @@ slurp
 swayidle
 sway-audio-idle-inhibit-git
 transmission-gtk
+zsh
+downgrade
+neofetch
+vi
+nano
+webcord
+swayosd
+yad
+xorg-xwayland
+jq
+nvidia-dkms

@@ -26,16 +26,11 @@ gsettings set org.gnome.desktop.interface cursor-theme 'Sweet-cursors'
 # For nemo
 gsettings set org.cinnamon.desktop.default-applications.terminal exec kitty
 
-# notification daemon
-swaync &
-
-telegram-desktop &
-
-webcord &
-
 # waybar
 $scripts/launch_waybar &
-# $scripts/dynamic &
+
+# notification daemon
+swaync &
 
 $scripts/idle &
 
@@ -55,13 +50,21 @@ mpd &
 # other
 hyprctl setcursor Sweet-cursors 28
 wl-paste --watch cliphist store &
-notify-send -a aurora "hello $(whoami)" &
 
-$scripts/lock &
+ibus-daemon -drv &
 
-sleep 2
-mpd-mpris &
+ibus engine BambooUs::Candy
 
 swayosd &
 
 scream -i virbr0 &
+
+QT_IM_MODULE=ibus telegram-desktop &
+
+webcord &
+
+$scripts/lock &
+
+sleep 2
+
+mpd-mpris &
