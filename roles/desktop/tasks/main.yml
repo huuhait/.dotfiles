@@ -13,6 +13,10 @@
     cmd: zsh -s
     stdin: "{{ zap_installer.content }}"
 
+- name: Install modprobe modules
+  include_tasks: modprobe.yml
+
+
 - name: Install themes
   include_tasks: themes.yml
 
