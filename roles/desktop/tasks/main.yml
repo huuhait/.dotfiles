@@ -1,3 +1,4 @@
+---
 - name: Set zsh as default shell
   ansible.builtin.shell:
     cmd: "chsh -s $(which zsh)"
@@ -15,7 +16,6 @@
 
 - name: Install modprobe modules
   include_tasks: modprobe.yml
-
 
 - name: Install themes
   include_tasks: themes.yml

@@ -5,7 +5,8 @@ pokemon-colorscripts-git
 xdg-desktop-portal-hyprland-git
 hyprland-git
 hyprpicker-git
-waybar-hyprland
+waybar
+waybar-hyprland-git
 cava
 mesa
 lib32-mesa
@@ -73,7 +74,16 @@ neofetch
 vi
 nano
 webcord
-swayosd
 yad
 xorg-xwayland
 jq
+google-chrome
+update-grub
+libvirt
+qemu-full
+virt-manager
+iptables-nft
+edk2-ovmf
+dnsmasq
+scream
+swtpm
