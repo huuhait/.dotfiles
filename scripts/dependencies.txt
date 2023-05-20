@@ -3,10 +3,14 @@ linux-zen
 linux-zen-headers
 pokemon-colorscripts-git
 xdg-desktop-portal-hyprland-git
-hyprland-nvidia
+hyprland-git
 hyprpicker-git
 waybar-hyprland
 cava
+mesa
+lib32-mesa
+vulkan-intel
+lib32-vulkan-intel
 kitty
 wofi
 starship
@@ -73,4 +77,3 @@ swayosd
 yad
 xorg-xwayland
 jq
-nvidia-dkms
