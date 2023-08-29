@@ -16,7 +16,6 @@ starship
 wl-clipboard
 swaync
 swaylock-effects
-swaylockd
 tty-clock-git
 playerctl
 pavucontrol
@@ -32,7 +31,7 @@ qt6-wayland
 lsd
 geany
 bat
-cliphist-bin
+cliphist
 gamemode
 polkit-gnome
 g4music
