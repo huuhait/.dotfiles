@@ -2,7 +2,7 @@ base-devel
 linux
 linux-headers
 pokemon-colorscripts-git
-xdg-desktop-portal-hyprland-git
+xdg-desktop-portal-hyprland
 hyprland-git
 hyprpicker-git
 waybar
