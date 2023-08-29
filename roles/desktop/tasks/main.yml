@@ -1,7 +1,7 @@
 ---
 - name: Set zsh as default shell
   ansible.builtin.shell:
-    cmd: "chsh -s $(which zsh)"
+    cmd: "sudo chsh -s $(which zsh)"
 
 - name: Fetch zap-zsh
   ansible.builtin.uri:
