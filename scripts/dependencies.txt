@@ -1,6 +1,6 @@
 base-devel
-linux-zen
-linux-zen-headers
+linux
+linux-headers
 pokemon-colorscripts-git
 xdg-desktop-portal-hyprland-git
 hyprland-git
@@ -10,8 +10,6 @@ waybar-hyprland-git
 cava
 mesa
 lib32-mesa
-vulkan-intel
-lib32-vulkan-intel
 kitty
 wofi
 starship
@@ -59,7 +57,10 @@ qimgv-light
 rlr-git
 uget
 libreoffice-fresh
-nemo
+thunar
+thunar-volman
+thunar-archive-plugin
+thunar-media-tags-plugin
 bulky
 gnome-keyring
 libsecret
@@ -79,11 +80,3 @@ xorg-xwayland
 jq
 google-chrome
 update-grub
-libvirt
-qemu-full
-virt-manager
-iptables-nft
-edk2-ovmf
-dnsmasq
-scream
-swtpm

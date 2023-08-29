@@ -1,8 +1,4 @@
 archcraft-bspwm
 archcraft-openbox
-thunar-archive-plugin
-thunar-media-tags-plugin
-thunar-volman
-thunar
 dunst
 xdg-desktop-portal-gnome
