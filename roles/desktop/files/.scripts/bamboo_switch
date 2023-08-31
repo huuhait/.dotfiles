@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+
+current_engine=$(ibus engine)
+
+if [[ "$current_engine" == "BambooUs" ]]; then
+  ibus engine Bamboo
+else
+  ibus engine +
+  +
+fi

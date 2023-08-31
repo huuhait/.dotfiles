@@ -79,3 +79,13 @@ xorg-xwayland
 jq
 google-chrome
 update-grub
+swayosd-git
+mpvpaper
+ibus-bamboo
+openssl-1.1
+ansible
+kubectl
+helm
+docker
+docker-compose
+direnv

@@ -36,6 +36,7 @@ alias sprs='sudo pacman -Rs'
 alias sprdd='sudo pacman -Rdd'
 
 #fix obvious typo's
+alias ssh='kitty +kitten ssh'
 alias cd..='cd ..'
 alias pdw='pwd'
 alias udpate='sudo pacman -Syyu'
@@ -150,9 +151,14 @@ alias neofetch='neofetch --source ~/.config/neofetch/logo'
 alias vs='vscodium'
 alias lv='lvim'
 
-
 # Starship prompt
 eval "$(starship init zsh)"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
+eval "$(direnv hook zsh)"
 
 # Neofetch
 neofetch

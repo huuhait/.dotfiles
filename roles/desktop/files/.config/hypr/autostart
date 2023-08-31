@@ -35,7 +35,7 @@ swaync &
 $scripts/idle &
 
 # wallpaper
-$scripts/wall ~/.config/hypr/wallpapers/3.jpg &
+$scripts/wall ~/.config/hypr/wallpapers/1.png &
 
 # effects
 # $scripts/tools/rgb &
@@ -53,11 +53,9 @@ wl-paste --watch cliphist store &
 
 ibus-daemon -drv &
 
-ibus engine BambooUs::Candy
+ibus engine BambooUs
 
-swayosd &
-
-scream -i virbr0 &
+swayosd-server &
 
 QT_IM_MODULE=ibus telegram-desktop &
 
@@ -66,5 +64,7 @@ webcord &
 $scripts/lock &
 
 sleep 2
+
+# mpvpaper -o "--loop" '*' ~/.config/hypr/wallpapers/live.mp4 &
 
 mpd-mpris &

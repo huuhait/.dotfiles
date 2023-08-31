@@ -1,78 +1,64 @@
-/*
- * vim: ft=less
- */
+/*    very bad                                           __
+*  _____      ____ _ _   _ _ __   ___    ___ ___  _ __  / _|
+* / __\ \ /\ / / _` | | | | '_ \ / __|  / __/ _ \| '_ \| |_
+* \__ \\ V  V / (_| | |_| | | | | (__  | (_| (_) | | | |  _|
+* |___/ \_/\_/ \__,_|\__, |_| |_|\___|  \___\___/|_| |_|_|
+*                    |___/
+*  basically me attempting to hijack the default config to have catppuccin colors */
 
-@define-color noti-bg rgb(22, 25, 37);
-@define-color cc-bg alpha(@noti-bg, 0.9);
+@define-color cc-bg rgb(17, 17, 27);
+@define-color text rgb(205, 214, 244);
 
-@define-color noti-border-color @noti-bg;
-@define-color noti-bg-hover rgb(39, 44, 66);
+@define-color noti-border-color rgb(24, 24, 37);
+@define-color noti-bg rgb(17, 17, 27);
+@define-color noti-bg-hover rgb(24, 24, 37);
+@define-color noti-bg-focus rgb(30, 30, 46);
 @define-color noti-close-bg rgba(255, 255, 255, 0.1);
 @define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
 
-@define-color bg-selected rgb(137, 180, 250);
+@define-color bg-selected rgb(166, 227, 161);
 
-
-/* Window behind control center and on all other monitors */
-.blank-window {
-  background: alpha(black, 0);
-
-}
-
-/* Main panel */
-.control-center {
-  background: @cc-bg;
-  border-radius: 16px;
-  border: 2px solid #cba6f7;
-}
-
-.control-center-list {
-  background: transparent;
-}
-
-.floating-notifications {
-  background: transparent;
-}
-
-
-/* Single row in panel */
 .notification-row {
   outline: none;
-  background: transparent;
-  border-radius: 16px;
-  transition: all 0.2s ease-in-out;
 }
 
 .notification-row:focus,
 .notification-row:hover {
-  outline: none;
-  background: transparent;
+  background: @noti-bg-focus;
 }
 
 .notification {
-  box-shadow: none;
-  outline: none;
+  border-radius: 12px;
+  margin: 6px 12px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px 1px rgba(0, 0, 0, 0.5),
+    0 1px 5px 1px rgba(0, 0, 0, 0.1);
   padding: 0;
-  margin: 0;
 }
 
-/* specific urgency colors */
-.critical .summary {
-  color: #f38ba8;
+/* Uncomment to enable specific urgency colors
+.low {
+  background: yellow;
+  padding: 6px;
+  border-radius: 12px;
 }
+
+.normal {
+  background: green;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.critical {
+  background: red;
+  padding: 6px;
+  border-radius: 12px;
+}
+*/
 
 .notification-content {
-  outline: none;
-  margin: 10px;
-  padding: 8px;
-  border-radius: 16px;
-  border: 2px solid #cba6f7;
-  background: @cc-bg;
-}
-
-.control-center .notification-content {
-  border: none;
   background: transparent;
+  padding: 6px;
+  border-radius: 12px;
 }
 
 .close-button {
@@ -80,11 +66,11 @@
   color: white;
   text-shadow: none;
   padding: 0;
-  margin-top: 15px;
-  margin-right: 15px;
+  border-radius: 100%;
+  margin-top: 10px;
+  margin-right: 16px;
   box-shadow: none;
   border: none;
-  border-radius: 100%;
   min-width: 24px;
   min-height: 24px;
 }
@@ -96,67 +82,104 @@
   border: none;
 }
 
-.control-center .close-button {
-  margin-top: 4px;
-  margin-right: 4px;
-}
-
 .notification-default-action,
 .notification-action {
-  padding: 0;
+  padding: 4px;
   margin: 0;
   box-shadow: none;
-  color: white;
-  outline: none;
-  background: transparent;
-  border: none;
+  background: @noti-bg;
+  border: 1px solid @noti-border-color;
+  color: @text;
 }
 
 .notification-default-action:hover,
 .notification-action:hover {
   -gtk-icon-effect: none;
+  background: @noti-bg-hover;
 }
 
-.image {
-  border-radius: 100%;
+.notification-default-action {
+  border-radius: 12px;
 }
+
+/* When alternative actions are visible */
+.notification-default-action:not(:only-child) {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.notification-action {
+  border-radius: 0px;
+  border-top: none;
+  border-right: none;
+}
+
+/* add bottom border radius to eliminate clipping */
+.notification-action:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.notification-action:last-child {
+  border-bottom-right-radius: 10px;
+  border-right: 1px solid @noti-border-color;
+}
+
+.image {}
 
 .body-image {
-  background-color: white;
-  border-radius: 100%;
+  margin-top: 6px;
+  background-color: @text;
+  border-radius: 12px;
 }
 
 .summary {
   font-size: 16px;
   font-weight: bold;
   background: transparent;
-  color: white;
+  color: @text;
   text-shadow: none;
 }
 
 .time {
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: bold;
   background: transparent;
-  color: white;
+  color: @text;
   text-shadow: none;
-  margin-right: 5px;
-
+  margin-right: 18px;
 }
 
 .body {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: normal;
   background: transparent;
-  color: white;
+  color: @text;
   text-shadow: none;
 }
 
 /* The "Notifications" and "Do Not Disturb" text widget */
 .top-action-title {
-  color: white;
+  color: @text;
   text-shadow: none;
 }
 
+.control-center {
+  background: @cc-bg;
+  border-radius: 10px;
+}
+
+.control-center-list {
+  background: transparent;
+}
+
+.floating-notifications {
+  background: transparent;
+}
+
+/* Window behind control center and on all other monitors */
+.blank-window {
+  background: transparent;
+}
 
 /*** Widgets ***/
 
@@ -168,9 +191,9 @@
 
 .widget-title > button {
   font-size: initial;
-  color: white;
+  color: @text;
   text-shadow: none;
-  background: @noti-bg;
+  background: @noti-bg-focus;
   border: 1px solid @noti-border-color;
   box-shadow: none;
   border-radius: 12px;
@@ -180,16 +203,29 @@
   background: @noti-bg-hover;
 }
 
+/* Volume and Brightness */
+.widget-volume {
+  margin: 0px 5px 0px 5px;
+  font-size: 35px;
+  background: none;
+}
+
+.widget-backlight {
+  margin: -20px 5px 0px 5px;
+  font-size: 35px;
+  background: none;
+}
+
 /* DND widget */
 .widget-dnd {
-  margin: 8px;
-  font-size: 1rem;
+  margin: 0px 8px 0px 8px;
+  font-size: 1.1rem;
 }
 
 .widget-dnd > switch {
   font-size: initial;
   border-radius: 12px;
-  background: @noti-bg;
+  background: @noti-bg-focus;
   border: 1px solid @noti-border-color;
   box-shadow: none;
 }
@@ -214,19 +250,18 @@
 
 /* Mpris widget */
 .widget-mpris {
-  /* The parent to all players */
+  margin: 5px;
 }
 
 .widget-mpris-player {
-  padding: 8px;
-  margin: 8px;
+  margin: -8px;
 }
 
 .widget-mpris-title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .widget-mpris-subtitle {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
 }

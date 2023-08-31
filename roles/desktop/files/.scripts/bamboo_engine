@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+while true
+do
+  current_engine=$(ibus engine)
+
+  # Check if the current engine is BambooUs::Candy
+  if [[ "$current_engine" == "BambooUs" ]]; then
+    echo "US"
+  else
+    echo "VN"
+  fi
+  sleep 0.1
+done

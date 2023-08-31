@@ -7,8 +7,8 @@
     "spacing": 0, // Gaps between modules (0px) Adjusted in the css
     "margin-top": 0,
     //"margin-bottom":-10,
-    // "margin-left": 10,
-    // "margin-right": 10,
+    // "padding-left": 10,
+    // "padding-right": 10,
     // Choose the order of the modules
     "modules-left": [
         "custom/launcher",
@@ -227,8 +227,8 @@
     },
     "custom/ibus": {
         "tooltip": false,
-        "exec": "~/.scripts/ibus_exec",
-        "on-click": "~/.scripts/ibus",
+        "exec": "~/.scripts/bamboo_engine",
+        "on-click": "~/.scripts/bamboo_switch"
     },
     "tray": {
         "icon-size": 15,

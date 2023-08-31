@@ -14,4 +14,4 @@ yay -S paru ansible
 sudo rm -rf $HOME/.cache/paru/clone
 
 paru -S $dependencies
-paru -R $remove_dependencies > /dev/null
+paru -R $remove_dependencies || echo "Warning: Remove packages not work"

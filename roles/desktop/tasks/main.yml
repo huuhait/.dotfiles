@@ -19,3 +19,8 @@
 
 - name: Install dotfiles
   include_tasks: dotfiles.yml
+
+- name: Create screenshot folder
+  ansible.builtin.file:
+    path: ~/Pictures/Screenshots
+    state: directory
