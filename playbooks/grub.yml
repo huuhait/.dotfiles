@@ -1,0 +1,39 @@
+---
+- name: Download and set grub theme
+  hosts: localhost
+  gather_facts: false
+  become: true
+
+  tasks:
+    - name: Download asus-rog.tar
+      get_url:
+        url: "https://github.com/AdisonCavani/distro-grub-themes/raw/master/themes/asus-rog.tar"
+        dest: "/tmp/asus-rog.tar"
+
+    - name: Extract asus-rog.tar
+      unarchive:
+        src: "/tmp/asus-rog.tar"
+        dest: "/tmp/asus-rog"
+        remote_src: true
+
+    - name: Copy asus-rog files to grub themes directory
+      copy:
+        src: "/tmp/asus-rog/*"
+        dest: "/boot/grub/themes/asus-rog"
+        remote_src: true
+        recurse: true
+
+    - name: Set grub theme to asus-rog
+      lineinfile:
+        path: "/etc/default/grub"
+        line: "GRUB_THEME=\"/boot/grub/themes/asus-rog/theme.txt\""
+        state: present
+
+    - name: Set grub gfxmode to 2560x1440
+      lineinfile:
+        path: "/etc/default/grub"
+        line: "GRUB_GFXMODE=2560x1440"
+        state: present
+
+    - name: Update grub
+      command: update-grub

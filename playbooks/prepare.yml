@@ -1,0 +1,93 @@
+---
+- name: Install paru and yay
+  hosts: localhost
+  gather_facts: false
+  hosts: localhost
+  become: true
+  become_user: huuhait
+  tasks:
+    - name: Install required packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - base-devel
+        - go
+        - git
+        - rustup
+
+    - name: Run rustup default stable
+      command: rustup default stable
+      args:
+        executable: /bin/bash
+        creates: /home/huuhait/.cargo/bin/rustc
+
+    - name: Set temporary directory path
+      set_fact:
+        temp_dir: "/home/huuhait/.tmp"
+
+    - name: Create .tmp directory
+      file:
+        path: "{{ temp_dir }}"
+        state: directory
+        mode: "0755"
+        owner: huuhait
+        group: huuhait
+
+    - name: Create temporary directory for paru
+      tempfile:
+        state: directory
+        path: "{{ temp_dir }}"
+        suffix: paru
+      register: paru_tmp_dir
+
+    - name: Clone paru repository
+      git:
+        repo: https://aur.archlinux.org/paru.git
+        dest: "{{ paru_tmp_dir.path }}"
+        version: master
+
+    - name: Build and install paru
+      command: makepkg -si
+      args:
+        chdir: "{{ paru_tmp_dir.path }}"
+
+    - name: Remove paru temporary directory
+      file:
+        path: "{{ paru_tmp_dir.path }}"
+        state: absent
+
+    - name: Install yay dependencies
+      package:
+        name:
+          - go
+          - diffutils
+        state: present
+
+    - name: Create temporary directory for yay
+      tempfile:
+        state: directory
+        path: "{{ temp_dir }}"
+        suffix: yay
+      register: yay_tmp_dir
+
+    - name: Clone yay repository
+      git:
+        repo: https://aur.archlinux.org/yay.git
+        dest: "{{ yay_tmp_dir.path }}"
+        version: master
+
+    - name: Build and install yay
+      command: makepkg -si
+      args:
+        chdir: "{{ yay_tmp_dir.path }}"
+
+    - name: Remove yay temporary directory
+      file:
+        path: "{{ yay_tmp_dir.path }}"
+        state: absent
+
+    - name: Remove yay temporary directory
+      file:
+        path: "{{ temp_dir.path }}"
+        state: absent

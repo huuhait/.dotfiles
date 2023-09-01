@@ -1,0 +1,46 @@
+---
+- name: Clone and configure Proxzima Plymouth theme
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Remove existing folder if it exists
+      file:
+        path: /tmp/proxzima-plymouth
+        state: absent
+      become: true
+      ignore_errors: true
+
+    - name: Clone Proxzima Plymouth theme
+      git:
+        repo: https://github.com/PROxZIMA/proxzima-plymouth.git
+        dest: /tmp/proxzima-plymouth
+
+    - name: Change directory to cloned folder
+      become: true
+      shell: cd /tmp/proxzima-plymouth
+
+    - name: Apply patches to proxzima.script
+      replace:
+        path: /tmp/proxzima-plymouth/proxzima/proxzima.script
+        regexp: "{{ item.regexp }}"
+        replace: "{{ item.replace }}"
+      loop:
+        - { regexp: 'boot = 196;', replace: 'boot = 97;' }
+        - { regexp: 'flyingman_image\[i\] = Image\("boot-" \+ i \+ ".png"\);', replace: 'flyingman_image[i] = Image("shut-" + i + ".png");' }
+
+    - name: Sync proxzima theme to /usr/share/plymouth/themes
+      synchronize:
+        src: /tmp/proxzima-plymouth/proxzima/
+        dest: /usr/share/plymouth/themes/proxzima
+        delete: true
+      become_user: root
+
+    - name: Check proxzima theme in the list
+      become: true
+      command: sudo plymouth-set-default-theme -l
+      register: theme_list
+
+    - name: Set proxzima as the default theme
+      become: true
+      command: sudo plymouth-set-default-theme -R proxzima

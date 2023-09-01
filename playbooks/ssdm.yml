@@ -1,0 +1,30 @@
+---
+- name: Clone sddm-themes repository and set SDDM theme
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Clone sddm-themes repository
+      git:
+        repo: https://github.com/catppuccin/sddm
+        dest: "~/sddm-themes"
+        version: master
+
+    - name: Copy sddm-themes to /usr/share/sddm/themes
+      copy:
+        src: "~/sddm-themes/src/"
+        dest: "/usr/share/sddm/themes"
+        remote_src: true
+        recursive: true
+
+    - name: Set SDDM theme to catppuccin-latte
+      lineinfile:
+        path: "/etc/sddm.conf"
+        line: "Current=catppuccin-latte"
+        state: present
+
+    - name: Delete sddm-themes folder
+      file:
+        path: "~/sddm-themes"
+        state: absent
+        recursive: true
