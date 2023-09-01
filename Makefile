@@ -10,6 +10,10 @@ plymouth:
 grub:
 	ansible-playbook playbooks/grub.yml --ask-become-pass
 
+.PHONY: grub
+sddm:
+	ansible-playbook playbooks/sddm.yml --ask-become-pass
+
 .PHONY: packages
 packages:
 	./scripts/packages

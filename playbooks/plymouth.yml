@@ -56,10 +56,21 @@
         delete: true
       become_user: root
 
+    - name: Set ShowDelay to 50 in plymouthd.conf
+      lineinfile:
+        path: /etc/plymouth/plymouthd.conf
+        regexp: '^ShowDelay='
+        line: 'ShowDelay=5'
+        state: present
+
     - name: Check proxzima theme in the list
       become: true
       command: sudo plymouth-set-default-theme -l
       register: theme_list
+
+    - name: Run mkinitcpio
+      become: true
+      command: sudo mkinitcpio -P
 
     - name: Set proxzima as the default theme
       become: true
