@@ -1,7 +1,13 @@
 ---
 - name: Set zsh as default shell
-  ansible.builtin.shell:
-    cmd: "sudo chsh -s $(which zsh)"
+  user:
+    name: huuhait
+    shell: /bin/zsh
+  become_user: "root"
+
+- name: Install Oh My Zsh
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ignore_errors: true 
 
 - name: Fetch zap-zsh
   ansible.builtin.uri:

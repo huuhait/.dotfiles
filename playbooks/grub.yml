@@ -25,6 +25,12 @@
         src: "/tmp/asus-rog/"
         dest: "/boot/grub/themes/asus-rog"
         delete: true
+    
+    - name: Uncomment line from /etc/ssh/sshd_config
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: '^#\s*GRUB_THEME.*$'
+        line: 'GRUB_THEME=theme'
 
     - name: Set grub theme to asus-rog
       replace:
@@ -39,6 +45,12 @@
         regexp: "^GRUB_GFXMODE=.*$"
         replace: "GRUB_GFXMODE=2560x1440"
         backup: yes
+    
+    - name: Remove GRUB_BACKGROUND line
+      lineinfile:
+        path: /etc/default/grub
+        regexp: "^GRUB_BACKGROUND='(.*?)'"
+        state: absent
 
     - name: Check if splash is already present in GRUB_CMDLINE_LINUX_DEFAULT
       command: grep -i 'splash' /etc/default/grub

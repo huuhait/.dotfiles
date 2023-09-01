@@ -9,7 +9,7 @@ export EDITOR=nvim
 ZSH_THEME="robbyrussell"
 
 # Plugins
-plugins=(git)
+plugins=(git ansible)
 source $ZSH/oh-my-zsh.sh
 
 # Zap

@@ -11,18 +11,11 @@
       with_items:
         - plymouth
 
-    - name: Check if plymouth is already present in HOOKS
-      command: grep -q 'plymouth' /etc/mkinitcpio.conf
-      register: plymouth_present
-      changed_when: false
-      failed_when: false
-
-    - name: Update HOOKS in mkinitcpio.conf
-      replace:
-        path: "/etc/mkinitcpio.conf"
-        regexp: '^HOOKS="(.*)"$'
-        replace: 'HOOKS="\1 plymouth"'
-      when: not plymouth_present.stdout
+    - name: Add plymouth module to dracut
+      copy:
+      dest: "/etc/dracut.conf.d/plymouth.conf"
+      content: |
+        add_dracutmodules+=" plymouth "
 
     - name: Remove existing folder if it exists
       file:
@@ -68,10 +61,10 @@
       command: sudo plymouth-set-default-theme -l
       register: theme_list
 
-    - name: Run mkinitcpio
-      become: true
-      command: sudo mkinitcpio -P
-
     - name: Set proxzima as the default theme
       become: true
       command: sudo plymouth-set-default-theme -R proxzima
+
+    - name: Run dracut
+      become: true
+      command: sudo dracut -force

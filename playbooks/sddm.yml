@@ -4,6 +4,13 @@
   gather_facts: false
   become: true
   tasks:
+    - name: Install required packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - sddm-git
+
     - name: Clone sddm-themes repository
       git:
         repo: https://github.com/catppuccin/sddm.git
@@ -16,32 +23,21 @@
         dest: "/usr/share/sddm/themes"
         delete: true
 
-    - name: Check if theme is already present in /etc/sddm.conf
-      command: grep -i 'Current=' /etc/sddm.conf
-      register: theme_present
-      changed_when: false
-      failed_when: false
-
-    - name: Update SDDM theme in /etc/sddm.conf
+    - name: Update SDDM theme in /usr/lib/sddm/sddm.conf.d/default.conf
       lineinfile:
-        path: "/etc/sddm.conf"
+        path: "/usr/lib/sddm/sddm.conf.d/default.conf"
         regexp: "^Current=.*"
         line: "Current=catppuccin-latte"
         backrefs: yes
         state: present
         create: yes
-      when: theme_present.stdout
-
-    - name: Update SDDM theme in /etc/sddm.conf
-      lineinfile:
-        path: "/etc/sddm.conf"
-        insertafter: "^\\[Theme\\]"
-        line: "Current=catppuccin-latte"
-        state: present
-        create: yes
-      when: not theme_present.stdout
 
     - name: Delete sddm-themes folder
       file:
         path: "/tmp/sddm-themes"
         state: absent
+
+    - name: Enable service sddm service
+      ansible.builtin.service:
+        name: sddm
+        enabled: yes
