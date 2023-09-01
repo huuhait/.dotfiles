@@ -29,19 +29,19 @@
     - name: Set grub theme to asus-rog
       replace:
         path: /etc/default/grub
-        regexp: "^GRUB_THEME=(.*?)"
+        regexp: "^GRUB_THEME=.*$"
         replace: "GRUB_THEME=/boot/grub/themes/asus-rog/theme.txt"
         backup: yes
 
     - name: Set grub gfxmode to 2560x1440
       replace:
         path: /etc/default/grub
-        regexp: "^GRUB_GFXMODE=(.*?)"
+        regexp: "^GRUB_GFXMODE=.*$"
         replace: "GRUB_GFXMODE=2560x1440"
         backup: yes
 
     - name: Check if splash is already present in GRUB_CMDLINE_LINUX_DEFAULT
-      command: grep -q 'splash' /etc/default/grub
+      command: grep -i 'splash' /etc/default/grub
       register: splash_present
       changed_when: false
       failed_when: false
