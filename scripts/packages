@@ -3,14 +3,6 @@
 dependencies=$(sed 's/.*/&/;$!s/$/ /' ./scripts/dependencies.txt | tr -d '\n')
 remove_dependencies=$(sed 's/.*/&/;$!s/$/ /' ./scripts/remove_dependencies.txt | tr -d '\n')
 
-sudo pacman -Syu
-
-# fix rust building
-yay -S rustup
-rustup default stable
-
-yay -S paru ansible
-
 sudo rm -rf $HOME/.cache/paru/clone
 
 paru -S $dependencies
