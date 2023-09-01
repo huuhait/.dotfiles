@@ -4,6 +4,26 @@
   gather_facts: false
   become: true
   tasks:
+    - name: Install required packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - plymouth
+
+    - name: Check if plymouth is already present in HOOKS
+      command: grep -q 'plymouth' /etc/mkinitcpio.conf
+      register: plymouth_present
+      changed_when: false
+      failed_when: false
+
+    - name: Update HOOKS in mkinitcpio.conf
+      replace:
+        path: "/etc/mkinitcpio.conf"
+        regexp: '^HOOKS="(.*)"$'
+        replace: 'HOOKS="\1 plymouth"'
+      when: not plymouth_present.stdout
+
     - name: Remove existing folder if it exists
       file:
         path: /tmp/proxzima-plymouth
