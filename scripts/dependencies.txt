@@ -3,10 +3,10 @@ linux
 linux-headers
 pokemon-colorscripts-git
 xdg-desktop-portal-hyprland
-hyprland-git
-hyprpicker-git
+hyprland
+hyprpicker
 waybar
-waybar-hyprland-git
+waybar-hyprland
 cava
 mesa
 lib32-mesa
