@@ -98,3 +98,9 @@ nvm
 go
 grub-customizer
 plug
+python
+python3
+python-pip
+python-virtualenv
+nm-connection-editor
+network-manager-applet

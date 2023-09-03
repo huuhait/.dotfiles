@@ -5,5 +5,5 @@ remove_dependencies=$(sed 's/.*/&/;$!s/$/ /' ./scripts/remove_dependencies.txt |
 
 sudo rm -rf $HOME/.cache/paru/clone
 
-paru -S $dependencies
+paru -S --noconfirm $dependencies
 paru -R $remove_dependencies || echo "Warning: Remove packages not work"

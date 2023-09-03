@@ -154,11 +154,11 @@ alias lv='lvim'
 # Starship prompt
 eval "$(starship init zsh)"
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
-
+# Direnv hook
 eval "$(direnv hook zsh)"
+
+# nvm hook
+source /usr/share/nvm/init-nvm.sh
 
 # Neofetch
 neofetch
